@@ -41,9 +41,9 @@ void hashmywords(char arr[][7],int i);
 void main()
 {
     printf("Encrypted Message: \n");
-    for(int i=0;mywords[i]!='\0';i++)        
+    for(int i=0;i<7;i++)        
     {
-        sort(&mywords[i],strlen(mywords[i]));    
+        sort(mywords[i],strlen(mywords[i]));    
         printf("%s ",mywords[i]);
     }
     int a=(int)mywords[0][0];
@@ -61,8 +61,8 @@ void sort(char* s,int size)
             if(*(s+i)>*(s+j))       
             {
                 int temp=*(s+j);        
-                *(s+j)=*(s+j+1);          
-                *(s+j+1)=temp;            
+                *(s+j)=*(s+i);          
+                *(s+i)=temp;            
             }
         }
     }
