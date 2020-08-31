@@ -44,8 +44,8 @@ void main()
     printf("This is my Table: \n%-10s \t%-10s \t%-10s \t%-25s \n","Decimal","Hexadecimal","Person Number","Status");
     for(int i=0;arrofHex[i] != NULL;i++)                           
     {
-        isWitchOrWizard[i]=(float)strtol(arrofHex[i],NULL,8)<<1;     
-        printf("%-10d\t\t",((float)strtol(arrofHex[i],NULL,8))<<1);     
+        isWitchOrWizard[i]=(int)strtol(arrofHex[i],NULL,16)<<1;     
+        printf("%-10d\t\t",((int)strtol(arrofHex[i],NULL,16))<<1);     
         printf("%-10s\t",arrofHex[i]);  
         printf("%-10d",i+1);
                                        

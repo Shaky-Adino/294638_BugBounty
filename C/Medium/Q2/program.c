@@ -28,19 +28,19 @@ unsigned long int ans = 1; ///////////////////// DON'T CHANGE THIS LINE/////////
 
 typedef struct
 {
-    char name[100];
+    char *name;
     int jersey;
 } football;
 
 int cnt = 0;
-football players[] = new football[100];
+football *players=NULL;
 
 void addplayer(char s[], int j)
 {
-    football p;
+    football *p;
     p->name = s;
     p->jersey = j;
-    players[cnt] = p;
+    players[cnt++] = *p;
 
     ans = ans * j + cnt; ///////////////////// DON'T CHANGE THIS LINE///////////////////
 }
@@ -50,14 +50,16 @@ void printplayers()
     int i;
     for (i = 0; i < cnt; i++)
     {
-        printf("%s", players[i]->name);
-        printf("%d\n", players[i]->jersey);
+        printf("%s", players[i].name);
+        printf("%d\n", players[i].jersey);
     }
 }
 
 int main()
 {
-    FILE infile;
+
+    players = (football *)malloc(sizeof(football)*100);
+    FILE *infile;
     football input;
     char buffer[255];
     int bufferLength = 255;
