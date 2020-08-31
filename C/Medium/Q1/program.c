@@ -35,7 +35,7 @@ void Sort(char arr[], int n)
     {
         for (j = 0; j < n - i - 1; j++)
         {
-            if (arr[i] > arr[i + 1])
+            if (arr[j] > arr[j + 1])
             {
                 swap(&arr[j], &arr[j + 1]);
                 p++; //Just a counter, ignore this  ///// DO NOT CHANGE THIS LINE /////
@@ -46,7 +46,8 @@ void Sort(char arr[], int n)
 
 int removeDups(char arr[], int n)
 {
-    int i = 0, j = 0, temp[n];
+    int i = 0, j = 0;
+    char *temp= (char *)malloc(n * sizeof(char)); 
     if (n == 0 || n == 1)
         return n;
 
@@ -63,14 +64,14 @@ int removeDups(char arr[], int n)
     return j;
 }
 
-void countDups(char orig[], int count[], int n, int newLength)
+void countDups(char *orig, int count[], int n, int newLength)
 {
     int i = 0, j = 0;
 
     for (i = 0; i < newLength; i++)
     {
-        count[i] = 0;
-        p += count[i] //Just a counter, ignore this  ///// DO NOT CHANGE THIS LINE /////
+        count[i] = 1;
+        p += count[i]; //Just a counter, ignore this  ///// DO NOT CHANGE THIS LINE /////
     }
 
     for (i = 0; i < n - 1; i++)
@@ -90,7 +91,7 @@ void countDups(char orig[], int count[], int n, int newLength)
 void Group(char arr[], int n)
 {
     int newLength, i = 0;
-    int orig[n];
+    char *orig = (char *)malloc(n * sizeof(char));
     for (i = 0; i < n; i++)
     {
         orig[i] = arr[i];
@@ -120,7 +121,7 @@ int main()
     int i = 0, pet;
     int length = 1000, res;
 
-    char *arr = (char *)malloc(length * sizeof(int));
+    char *arr = (char *)malloc(length * sizeof(char));
 
     FILE *fp = fopen("./data.txt", "r");
     while (fp != NULL)

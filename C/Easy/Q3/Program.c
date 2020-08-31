@@ -35,19 +35,22 @@ int solve(int arr[])
    
     int i,j,temp;
     //sorted  in ascending order.
-    for (i = 0, i < n-1, i++)
+    for (i = 0; i < n-1; i++)
     {
-       for (j = 0, j < n-1, j++)  
+       for (j = 0; j < n-1-i; j++)  
        {
            if (arr[j] > arr[j+1]) 
             {
                 temp=arr[j];
-                arr[j+1]=arr[j];
-                arr[j]=temp;
+                arr[j]=arr[j+1];
+                arr[j+1]=temp;
             }
        }
     }
-    return arr[n]*arr[n-1];         /// Last two numbers
+
+    int a = arr[0]*arr[1];
+    int b = arr[n-1]*arr[n-2];
+    return a>b?a:b;         /// Last two numbers
 }
 
 //////////////////////// THE CODE BELOW THIS IS CORRECT, DON'T CHANGE IT. IF ANY ERROR OCCURS WHILE READING INPUT FILE, CONTACT US ///////////////////////
