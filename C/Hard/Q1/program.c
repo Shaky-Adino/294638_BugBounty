@@ -71,37 +71,43 @@ int main()
 int lps(char *str)
 {
     int length = strlen(str);
-    bool table[length - 1][length - 1]; // 2D boolean array of size 'length'
-    memset(table, 1, sizeof(table));    //In the code below, table[i][j] will be set to true if substring str[i..j] is palindrome.
+    bool table[length][length]; // 2D boolean array of size 'length'
+    memset(table, 0, sizeof(table));    //In the code below, table[i][j] will be set to true if substring str[i..j] is palindrome.
     int maxLength = 1;                  //Every string of length is palindrome
 
     // check for sub-string of length 2.
     for (int i = 0; i < length; i += 1)
         table[i][i] = true;
 
+    int start = 0;
+
      for (int i = 0; i < length - 1; ++i)
     {
         if (str[i] == str[i + 1])
         {
             table[i][i + 1] = true;
+            start = i;
             maxLength = 2;
         }
     }
 
     // Check for lengths greater than 2. 'k' is the length of substring
-    for (int k = 4; k <= length; ++k)
+    for (int k = 3; k <= length; ++k)
     {
         for (int i = 0; i < length - k + 1; ++i)
         {
             int j = i + k - 1;
 
             // checking for sub-string from ith index to jth index if str[i+1] to str[j-1] is a palindrome
-            if (table[i - 1][j + 1] && str[i] == str[j])
+            if (table[i + 1][j - 1] && str[i] == str[j])
             {
                 table[i][j] = true;
 
-                if (k > maxLength)
+                if (k > maxLength){
+                    start = i;
                     maxLength = k;
+                }
+                    
             }
         }
     }
