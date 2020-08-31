@@ -27,7 +27,7 @@ MAY THE BUG BE WITH YOU
 
 int funct(n)
 {
-    if(n==0) 
+    if(n<=0) 
     {
         return 0;
     }
@@ -36,7 +36,7 @@ int funct(n)
 
 int main()
 {
-    int num,ans
+    int num,ans;
     num=getNum();       
     ans=funct(num);
 
