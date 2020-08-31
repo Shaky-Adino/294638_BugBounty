@@ -38,14 +38,14 @@ OUTPUT:
 
 int main() {
     
-    char s;
+    char *s;
     s = getString();
-    int arr[10],a;
+    int arr[10]={0},a;
     for (int i=0; i< strlen(s); i++) 
     {
         if(isdigit(s[i]))
             {
-                a=(int)s[i]-'O';
+                a=(int)(s[i]-'0');
                 arr[a]++;
             }
     }
